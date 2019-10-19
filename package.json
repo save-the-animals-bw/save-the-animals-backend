@@ -1,0 +1,27 @@
+{
+  "name": "save-the-animals-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/save-the-animals-bw/save-the-animals-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/save-the-animals-bw/save-the-animals-backend/issues"
+  },
+  "homepage": "https://github.com/save-the-animals-bw/save-the-animals-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "i": "^0.3.6",
+    "nodemon": "^1.19.4",
+    "npm": "^6.12.0"
+  }
+}
