@@ -37,15 +37,15 @@ router.get("/organizations/:id/campaigns", checkOrgan_Id, (req, res) => {
     });
 });
 
-router.post("/organizations/:id/campaigns",checkCampaignInput, checkOrgan_Id, (req, res) => {
-    campaignsModel
-      .addCampaign(req.body)
-      .then(campaign => {
-        res.status(200).json(campaign);
-      })
-      .catch(err => {
-        res.status(500).json({ message: "Failed to create the campaign", err });
-      });
+router.post("/campaigns", checkCampaignInput,  (req, res) => {
+  campaignsModel
+    .addCampaign(req.body)
+    .then(campaign => {
+      res.status(200).json(campaign);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Failed to create the campaign", err });
+    });
 });
 
 
