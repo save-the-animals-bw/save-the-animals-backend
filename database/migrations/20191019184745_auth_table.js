@@ -1,18 +1,6 @@
 exports.up = function(knex) {
   return knex.schema
-    .createTable("users_support", tbl => {
-      tbl.increments();
-      tbl
-        .string("username_s", 255)
-        .notNullable()
-        .unique();
-      tbl.string("password", 255).notNullable();
-      tbl.string("email", 255).notNullable().unique();
-      tbl
-        .string("userType", 255)
-        .notNullable()
-        .defaultTo("support");
-    })
+    
     .createTable("organizations", tbl => {
       tbl.increments();
       tbl
@@ -20,10 +8,10 @@ exports.up = function(knex) {
         .notNullable()
         .unique();
     })
-    .createTable("users_organization", tbl => {
+    .createTable("users", tbl => {
       tbl.increments();
       tbl
-        .string("username_o", 255)
+        .string("username", 255)
         .notNullable()
         .unique();
       tbl.string("password", 255).notNullable();
@@ -31,11 +19,10 @@ exports.up = function(knex) {
       tbl
         .string("userType", 255)
         .notNullable()
-        .defaultTo("organization");
+        
       tbl
         .integer("organization_id")
         .unsigned()
-        .notNullable()
         .references("id")
         .inTable("organizations")
         .onUpdate("CASCADE")
@@ -46,7 +33,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists("users_organization")
+    .dropTableIfExists("users")
     .dropTableIfExists("organizations")
-    .dropTableIfExists("users_support");
+    
 };
