@@ -3,7 +3,7 @@ const express = require("express");
 const campaignsModel = require("./campaigns-model.js");
 const organizationsModel = require("../organizations/organizations_model.js");
 const checkOrgan_Id = require('../organizations/checkOrganId-middleware.js')
-
+const checkCampaignInput = require('./checkCampaignInput-middleware.js')
 const router = express.Router();
 
 router.get("/campaigns", (req, res) => {
@@ -37,7 +37,7 @@ router.get("/organizations/:id/campaigns", checkOrgan_Id, (req, res) => {
     });
 });
 
-router.post("/organizations/:id/campaigns", checkOrgan_Id, (req, res) => {
+router.post("/organizations/:id/campaigns",checkCampaignInput, checkOrgan_Id, (req, res) => {
     campaignsModel
       .addCampaign(req.body)
       .then(campaign => {
