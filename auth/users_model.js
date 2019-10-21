@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function findAllUsers() {
-  return db("users").select("id", "username", "userType");
+  return db("users").select("id", "username", "userType").orderBy('userType');
 }
 
 function findUserById(id) {

@@ -68,8 +68,7 @@ router.post("/login", (req, res) => {
             token,
             username: `${user.username}`,
             userType: `${user.userType}`,
-            organ_name: `${user.organ_name}` || null,
-            organ_id: `${user.organization_id}`
+            organ_name: `${user.organ_name}` 
           });
         } else {
           res.status(200).json({

@@ -30,8 +30,7 @@ describe("POST /auth/register", () => {
         username: "Kelly",
         password: "123",
         email: "kelly@gmail.com",
-        userType:"organization",
-        organization_id: 1
+        userType: "support"
       })
       .then(res => {
         expect(res.status).toBe(201);
