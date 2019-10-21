@@ -2,6 +2,7 @@ const express = require("express");
 
 const organizationsModel = require("./organizations_model.js");
 const campaignsModel = require("../campaigns/campaigns-model.js");
+const checkOrgan_Id = require('./checkOrganId-middleware.js')
 
 const router = express.Router();
 
@@ -56,29 +57,6 @@ router.post("/", (req, res) => {
   }
 });
 
-router.get("/:id/campaigns", (req, res) => {
-  organizationsModel.findOrganizationById(req.params.id).then(organ => {
-    if (!organ) {
-      res.status(404).json({
-        message: "Can't not find organization by the giving organizaiton_id"
-      });
-    } else {
-      campaignsModel
-        .findCampaignsByOrganId(req.params.id)
-        .then(campaigns => {
-          if (!campaigns[0]) {
-            res.json(null);
-          } else {
-            res.json(campaigns);
-          }
-        })
-        .catch(err => {
-          res
-            .status(500)
-            .json({ message: "Failed to get campaigns list", err });
-        });
-    }
-  });
-});
+
 
 module.exports = router;

@@ -2,23 +2,37 @@ const db = require("../database/dbConfig.js");
 
 module.exports = {
   findAllCampaigns,
-  
-    findCampaignsByOrganId,
-  addCampaign,
+  findCampaignsById,
+  findCampaignsByOrganId,
+  addCampaign
 };
-function findAllCampaigns(){
-    return db("campaigns")
-      
+function findAllCampaigns() {
+  return db("campaigns");
 }
-
+function findCampaignsById(id) {
+  return db("campaigns")
+    .where({ id })
+    .first();
+}
 function findCampaignsByOrganId(organization_id) {
   return db("campaigns")
     .join("organizations", "organizations.id", "campaigns.organization_id")
     .where({ organization_id: organization_id })
-    .select("title",'campaigns.id as campaigns_id','location','species','urgency',"image_url");
-    
-}  
+    .select(
+      "title",
+      "organ_name",
+      "location",
+      "species",
+      "urgency",
+      "image_url"
+    );
+}
 
-function addCampaign() {
-    return null
+function addCampaign(campaign) {
+  return db("campaigns")
+    .insert(campaign, "id")
+    .then(ids => {
+      const [id] = ids;
+      return findCampaignsById(id);
+    });
 }

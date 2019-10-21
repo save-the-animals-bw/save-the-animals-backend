@@ -15,7 +15,7 @@ server.use(express.json());
 server.use('/api/organizations', organizationsRouter)
 
 server.use('/api/auth', authRouter)
-server.use('/api/campaigns', campaignRouter)
+server.use('/api', campaignRouter)
 
 server.get("/", (req, res) => {
   res.json({ message: "WELCOME TO SAVE-THE-ANIMALS DATABASE" });
