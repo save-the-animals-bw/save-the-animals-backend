@@ -7,7 +7,7 @@ exports.up = function(knex) {
         .notNullable()
         .unique();
       tbl.string("password", 255).notNullable();
-      tbl.string("email", 255).notNullable();
+      tbl.string("email", 255).notNullable().unique();
       tbl
         .string("userType", 255)
         .notNullable()
@@ -27,7 +27,7 @@ exports.up = function(knex) {
         .notNullable()
         .unique();
       tbl.string("password", 255).notNullable();
-      tbl.string("email", 255).notNullable();
+      tbl.string("email", 255).notNullable().unique();
       tbl
         .string("userType", 255)
         .notNullable()
@@ -40,7 +40,7 @@ exports.up = function(knex) {
         .inTable("organizations")
         .onUpdate("CASCADE")
         .onDelete("CASCADE");
-      tbl.string("organization_name", 255);
+     
     });
 };
 

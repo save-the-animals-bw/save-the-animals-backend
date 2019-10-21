@@ -46,7 +46,8 @@ it("should return 500 by adding duplicated userInfo", () => {
               expect(res.status).toBe(500);
           })
       
-    });
+      });
+  
 });
     
     
