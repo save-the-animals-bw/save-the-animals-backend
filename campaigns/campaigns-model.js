@@ -21,7 +21,7 @@ function findCampaignsByOrganId(organization_id) {
     .join("organizations", "organizations.id", "campaigns.organization_id")
     .where({ organization_id: organization_id })
       .select(
-        "campaigns.id",
+        "campaigns.id as campaigns_id",
       "title",
       "organ_name",
       "location",

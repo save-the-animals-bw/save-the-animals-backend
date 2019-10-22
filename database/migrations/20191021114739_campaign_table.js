@@ -17,7 +17,17 @@ exports.up = function(knex) {
         .references("id")
         .inTable("organizations")
         .onUpdate("CASCADE")
-        .onDelete("CASCADE");
+        .onDelete("CASCADE")
+       tbl
+          .integer("funding_received")
+          .unsigned()
+          .notNullable()
+         .defaultTo(0);
+       tbl
+         .integer("totalFunding_needed")
+         .unsigned()
+         .notNullable()
+         .defaultTo(0);
     })
     .createTable("funding", tbl => {
       tbl.increments();
@@ -28,12 +38,7 @@ exports.up = function(knex) {
           .integer("amount_need")
           .unsigned()
             .notNullable();
-        tbl
-          .integer("funding_received")
-          .unsigned()
-          .notNullable()
-            .defaultTo(0);
-        tbl
+       tbl
           .string("campaign_id")
           .unsigned()
           .references("id")
@@ -44,5 +49,7 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+  return knex.schema
+    .dropTableIfExists("funding")
+    .dropTableIfExists("campaigns");
 };
