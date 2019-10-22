@@ -20,14 +20,16 @@ function findCampaignsByOrganId(organization_id) {
   return db("campaigns")
     .join("organizations", "organizations.id", "campaigns.organization_id")
     .where({ organization_id: organization_id })
-      .select(
-        "campaigns.id as campaigns_id",
+    .select(
+      "campaigns.id as campaigns_id",
       "title",
       "organ_name",
       "location",
       "species",
       "urgency",
-      "image_url"
+      "image_url",
+      "funding_received",
+      'totalFunding_needed'
     );
 }
 
