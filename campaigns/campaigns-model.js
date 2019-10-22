@@ -52,5 +52,11 @@ function updateCampaign(id, change) {
 }
 
 function removeCampaign(id) {
-    return db('campaigns').where({ id }).del();
+  return db('campaigns').where({ id }).del().then((result) => {
+    if (result = 1) {
+        return "removed"
+    } else {
+      return "Failed to remove"
+      }
+    })
 }
