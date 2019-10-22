@@ -62,6 +62,7 @@ router.post("/login", (req, res) => {
     .then(user => {
       if (user && bcrypt.compareSync(req.body.password, user.password)) {
         const token = generateToken(user);
+        
         if (user.organization_id) {
           res.status(200).json({
             message: `Hi! ${user.username}`,
@@ -93,7 +94,7 @@ function generateToken(user) {
   const payload = {
     username: user.username,
     subject: user.user_id,
-    userType: user.userType
+    userType: user.userType, 
   };
   const options = {
     expiresIn: "1h"
