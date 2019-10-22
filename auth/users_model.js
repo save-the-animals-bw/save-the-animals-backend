@@ -24,7 +24,7 @@ function findUserByName(username) {
     .first()
     .then(user => {
       if (user.organization_id) {
-        console.log(user.organization_id);
+        
         return db("users")
           .join("organizations", "organizations.id", "users.organization_id")
           .where({ organization_id: user.organization_id })
