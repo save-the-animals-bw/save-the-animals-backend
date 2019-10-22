@@ -36,7 +36,7 @@ exports.up = function(knex) {
           .unsigned()
             .notNullable();
        tbl
-          .string("campaign_id")
+          .integer("campaign_id")
          .unsigned()
          .notNullable()
           .references("id")
