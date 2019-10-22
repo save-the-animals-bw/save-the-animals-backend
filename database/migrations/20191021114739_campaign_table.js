@@ -14,6 +14,7 @@ exports.up = function(knex) {
       tbl
         .integer("organization_id")
         .unsigned()
+        .notNullable()
         .references("id")
         .inTable("organizations")
         .onUpdate("CASCADE")
@@ -40,7 +41,8 @@ exports.up = function(knex) {
             .notNullable();
        tbl
           .string("campaign_id")
-          .unsigned()
+         .unsigned()
+         .notNullable()
           .references("id")
           .inTable("campaigns")
           .onUpdate("CASCADE")
