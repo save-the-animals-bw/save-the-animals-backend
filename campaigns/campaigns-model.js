@@ -4,7 +4,9 @@ module.exports = {
   findAllCampaigns,
   findCampaignsById,
   findCampaignsByOrganId,
-  addCampaign
+    addCampaign,
+    updateCampaign,
+    removeCampaign
 };
 function findAllCampaigns() {
   return db("campaigns");
@@ -35,4 +37,17 @@ function addCampaign(campaign) {
       const [id] = ids;
       return findCampaignsById(id);
     });
+}
+
+function updateCampaign(id, change) {
+    return db("campaigns")
+      .where({ id })
+      .update(change)
+      .then(() => {
+        return findCampaignsById(id);
+      });
+}
+
+function removeCampaign(id) {
+    return db('campaigns').where({ id }).del();
 }
