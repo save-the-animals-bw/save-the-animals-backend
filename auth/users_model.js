@@ -28,8 +28,9 @@ function findUserByName(username) {
         return db("users")
           .join("organizations", "organizations.id", "users.organization_id")
           .where({ organization_id: user.organization_id })
+          .where({username:user.username})
           .select(
-            "username as username",
+            "username",
             "password",
             "email",
             "userType",

@@ -113,8 +113,8 @@ router.delete("/campaigns/:id", restricted_organization, (req, res) => {
       } else {
         campaignsModel
           .removeCampaign(req.params.id)
-          .then(() => {
-            res.status(200).json({ message: "removed" });
+          .then((result) => {
+            res.status(200).json(result);
           })
           .catch(err => {
             res
