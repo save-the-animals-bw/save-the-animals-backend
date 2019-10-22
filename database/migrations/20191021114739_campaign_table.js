@@ -24,11 +24,7 @@ exports.up = function(knex) {
           .unsigned()
           .notNullable()
          .defaultTo(0);
-       tbl
-         .integer("totalFunding_needed")
-         .unsigned()
-         .notNullable()
-         .defaultTo(0);
+       
     })
     .createTable("funding", tbl => {
       tbl.increments();

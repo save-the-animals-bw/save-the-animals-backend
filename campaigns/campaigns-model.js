@@ -28,8 +28,7 @@ function findCampaignsByOrganId(organization_id) {
       "species",
       "urgency",
       "image_url",
-      "funding_received",
-      'totalFunding_needed'
+      "funding_received"
     );
 }
 
