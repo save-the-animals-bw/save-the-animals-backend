@@ -1,4 +1,5 @@
 module.exports = (req, res, next) => {
+  
   if (
     !req.body ||
     !req.body.title ||
@@ -10,7 +11,7 @@ module.exports = (req, res, next) => {
     res
       .status(404)
       .json({
-        message: "Missing register info: title, location, species, urgency or organization_id"
+        message: "Missing info: title, location, species, urgency or organization_id"
       });
   } else {
     next();
