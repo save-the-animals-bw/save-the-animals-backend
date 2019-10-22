@@ -97,7 +97,7 @@ function generateToken(user) {
     userType: user.userType, 
   };
   const options = {
-    expiresIn: "1h"
+    expiresIn: "1d"
   };
   return jwt.sign(payload, secret.jwtSecret, options);
 }
