@@ -6,8 +6,8 @@ module.exports = {
     addFunding,
     updateFunding,
     removeFunding,
-    findFundingByCampaignId
-
+    findFundingByCampaignId,
+    sumOfFundingsByCampaignId,
 }
 
 function findAllFunding() {
@@ -54,5 +54,12 @@ function findFundingByCampaignId(campaign_id) {
       "campaigns",
       "campaigns.id",
       "funding.campaign_id"
-    ).where({campaign_id:campaign_id}).select("funding.id as funding_id","donation_name","amount_need")
+    ).where({campaign_id:campaign_id}).select("funding.id as funding_id","donation_name","amount_need","campaigns.id as campaign_id")
+}
+
+function sumOfFundingsByCampaignId(campaign_id) {
+  return db("funding")
+    .join("campaigns", "campaigns.id", "funding.campaign_id")
+    .where({ campaign_id: campaign_id })
+    .sum("amount_need")
 }

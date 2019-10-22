@@ -4,10 +4,9 @@ const campaignsModel = require("./campaigns-model.js");
 const usersModel = require("../auth/users_model.js");
 
 const restricted_supporter = require("./restricted_supporter-middleware");
-const checkOrgan_Id = require("../organizations/checkOrganId-middleware.js");
 const checkCampaignInput = require("./checkCampaignInput-middleware.js");
-
 const restricted_organization = require("./restricted_organization-middleware.js");
+
 const router = express.Router();
 
 router.get("/campaigns/supporters", restricted_supporter, (req, res) => {
@@ -113,7 +112,7 @@ router.delete("/campaigns/:id", restricted_organization, (req, res) => {
       } else {
         campaignsModel
           .removeCampaign(req.params.id)
-          .then((result) => {
+          .then(result => {
             res.status(200).json(result);
           })
           .catch(err => {
