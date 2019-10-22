@@ -65,6 +65,21 @@ router.post(
   }
 );
 
+router.get("/campaigns/:id", restricted_organization, (req, res) => {
+  campaignsModel
+    .findCampaignsById(req.params.id)
+    .then(campaign => {
+      if (!campaign) {
+        res.status(401).json({ message: " Invalid Id", err });
+      } else {
+        res.status(200).json(campaign);
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Failed to find the campaign", err });
+    });
+});
+
 router.put("/campaigns/:id", restricted_organization, (req, res) => {
   campaignsModel
     .findCampaignsById(req.params.id)
@@ -89,29 +104,28 @@ router.put("/campaigns/:id", restricted_organization, (req, res) => {
     });
 });
 
-router.delete('/campaigns/:id', restricted_organization, (req, res) => { 
-    campaignsModel
-      .findCampaignsById(req.params.id)
-      .then(campaign => {
-        if (!campaign) {
-          res.status(401).json({ message: " Invalid Id", err });
-        } else {
-          campaignsModel
-            .removeCampaign(req.params.id)
-            .then(() => {
-              res.status(200).json({ message: "removed" });
-            })
-            .catch(err => {
-              res
-                .status(500)
-                .json({ message: "Failed to remove the campaign", err });
-            });
-        }
-      })
-      .catch(err => {
-        res.status(500).json({ message: "Failed to find the campaign", err });
-      });
-    
-})
+router.delete("/campaigns/:id", restricted_organization, (req, res) => {
+  campaignsModel
+    .findCampaignsById(req.params.id)
+    .then(campaign => {
+      if (!campaign) {
+        res.status(401).json({ message: " Invalid Id", err });
+      } else {
+        campaignsModel
+          .removeCampaign(req.params.id)
+          .then(() => {
+            res.status(200).json({ message: "removed" });
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ message: "Failed to remove the campaign", err });
+          });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Failed to find the campaign", err });
+    });
+});
 
 module.exports = router;

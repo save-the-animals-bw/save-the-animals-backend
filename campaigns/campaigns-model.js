@@ -20,7 +20,8 @@ function findCampaignsByOrganId(organization_id) {
   return db("campaigns")
     .join("organizations", "organizations.id", "campaigns.organization_id")
     .where({ organization_id: organization_id })
-    .select(
+      .select(
+        "campaigns.id",
       "title",
       "organ_name",
       "location",
