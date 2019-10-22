@@ -51,7 +51,7 @@ router.get("/campaigns/organizations", restricted_organization,(req, res) => {
     
 });
 
-router.post("/campaigns", checkCampaignInput,  (req, res) => {
+router.post("/campaigns", restricted_organization, checkCampaignInput,  (req, res) => {
   campaignsModel
     .addCampaign(req.body)
     .then(campaign => {
