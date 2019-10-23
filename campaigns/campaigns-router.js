@@ -79,7 +79,7 @@ router.get("/campaigns/:id", restricted_organization, (req, res) => {
     });
 });
 
-router.put("/campaigns/:id", restricted_organization, (req, res) => {
+router.put("/campaigns/:id", (req, res) => {
   campaignsModel
     .findCampaignsById(req.params.id)
     .then(campaign => {
