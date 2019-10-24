@@ -1,15 +1,14 @@
-# save-the-animals-backend
 
-| Endpoints                                                      | Request | Required                | Response                                                                                              |
-|----------------------------------------------------------------|---------|-------------------------|-------------------------------------------------------------------------------------------------------|
-| https://saving-the-animals.herokuapp.com/api/organizations     | GET     |                         | The whole list of Organizations                                                                       |
-| https://saving-the-animals.herokuapp.com/api/organizations/:id | GET     |                         | {"id": Integer,<br> "organ_name": String}                                                               |
-| https://saving-the-animals.herokuapp.com/api/organizations     | POST    | {"organ_name":String} | {"message": "Added organization",<br> "organization": {"Id": Integer,<br>    "organ_name": String    }<br> } |
+| Endpoints                                                      | Request   |
+|----------------------------------------------------------------|-----------|
+| https://saving-the-animals.herokuapp.com/api/organizations     | GET, POST |
+| https://saving-the-animals.herokuapp.com/api/organizations/:id | GET       |
 
 
 
-| Endpoints                                                  | Request | Required                                                                                                                                                                                                                                                      | Response                                                                                                                                                                                                                                                           |
-|------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| https://saving-the-animals.herokuapp.com/api/auth          | GET     |                                                                                                                                                                                                                                                               | The whole list of users                                                                                                                                                                                                                                            |
-| https://saving-the-animals.herokuapp.com/api/auth/register | POST    | For Organization: { "username":String, "email":String, "password":String, "userType":"organization" or ”support”, "organization_id":Integer } <br><br> For Support: { "username":String, "email":String, "password":String, "userType":"organization" or ”support” } | { "message": "Account created!" }                                                                                                                                                                                                                                  |
-| https://saving-the-animals.herokuapp.com/api/auth/login    | POST    | { <br>"username":String,<br> "password":String<br> }                                                                                                                                                                                                                      | For Organization:<br> { "message": "Hi! username", <br>"token": String, <br>"username": String, <br>"userType": "organization", <br>"organ_name": String,<br> “organ_id”:Integer } <br><br> For Support: <br>{ "message": "Hi! username", <br>"token": String,<br> "username": String,<br> "userType": "support" } |
+
+| Endpoints                                                  | Request |
+|------------------------------------------------------------|---------|
+| https://saving-the-animals.herokuapp.com/api/auth          | GET     |
+| https://saving-the-animals.herokuapp.com/api/auth/register | POST    |
+| https://saving-the-animals.herokuapp.com/api/auth/login    | POST    |
