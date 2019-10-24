@@ -2,14 +2,14 @@
 
 - All Endpoints details: https://docs.google.com/document/d/1hGYGoh-QnEGzYZZxQoZmuO7RdAv9Sgd0Asnx9cJClZA/edit?usp=sharing 
 
-## Organizations Endpoints
+### Organizations Endpoints
 
 | Endpoints                                                      | Request   |
 |----------------------------------------------------------------|-----------|
 | https://saving-the-animals.herokuapp.com/api/organizations     | GET, POST |
 | https://saving-the-animals.herokuapp.com/api/organizations/:id | GET       |
 
-## Auth Endpoints
+### Auth Endpoints
  
 | Endpoints                                                  | Request |
 |------------------------------------------------------------|---------|
@@ -17,7 +17,7 @@
 | https://saving-the-animals.herokuapp.com/api/auth/register | POST    |
 | https://saving-the-animals.herokuapp.com/api/auth/login    | POST    |
 
-## Campaigns Endpoints
+### Campaigns Endpoints
 
 | Endpoints                                                            | Request    |
 |----------------------------------------------------------------------|------------|
@@ -26,7 +26,7 @@
 | https://saving-the-animals.herokuapp.com/api/campaigns               | POST       |
 | https://saving-the-animals.herokuapp.com/api/campaigns/:id           | PUT,DELETE |
 
-## Funding Endpoints
+### Funding Endpoints
 
 | Endpoints                                                         | Request     |
 |-------------------------------------------------------------------|-------------|
