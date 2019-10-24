@@ -30,5 +30,5 @@
 
 | Endpoints                                                         | Request     |
 |-------------------------------------------------------------------|-------------|
-| https://saving-the-animals.herokuapp.com/api/campaigns/1/fundings | GET, POST   |
+| https://saving-the-animals.herokuapp.com/api/campaigns/:id/fundings | GET, POST   |
 | https://saving-the-animals.herokuapp.com/api/fundings/:id         | PUT, DELETE |
