@@ -8,6 +8,7 @@ const secret = require("../config/secrets");
 const checkAuthInput = require("./checkAuthInput-middleware.js");
 const checkUserType = require('./checkUserType-middleware.js')
 
+// return all users
 router.get("/", (req, res) => {
   usersModel
     .findAllUsers()
@@ -23,6 +24,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// return user by userID
 router.get("/:id", (req, res) => {
   usersModel
     .findUserById(req.params.id)
@@ -42,7 +44,9 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/register", checkAuthInput,checkUserType, (req, res) => {
+// user register
+router.post("/register", checkAuthInput, checkUserType, (req, res) => {
+  // hash password
   const hash = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hash;
 
@@ -56,10 +60,12 @@ router.post("/register", checkAuthInput,checkUserType, (req, res) => {
     });
 });
 
+// user login
 router.post("/login", (req, res) => {
   usersModel
     .findUserByName(req.body.username)
     .then(user => {
+      // check the password
       if (user && bcrypt.compareSync(req.body.password, user.password)) {
         const token = generateToken(user);
         

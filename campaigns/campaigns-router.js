@@ -9,6 +9,8 @@ const restricted_organization = require("./restricted_organization-middleware.js
 
 const router = express.Router();
 
+// restricted_supporter- check if the user is supporter
+// return all campaigns
 router.get("/campaigns/supporters", restricted_supporter, (req, res) => {
   campaignsModel
     .findAllCampaigns()
@@ -24,6 +26,8 @@ router.get("/campaigns/supporters", restricted_supporter, (req, res) => {
     });
 });
 
+// restricted_organization- make sure the user is from one of the organization
+// get the organizaion_id info from the user, and return the campaigns by the organizaiton_id
 router.get("/campaigns/organizations", restricted_organization, (req, res) => {
   usersModel
     .findUserByName(req.user.username)
@@ -48,6 +52,8 @@ router.get("/campaigns/organizations", restricted_organization, (req, res) => {
     });
 });
 
+// only the organization can post campaigns
+// checkCampaignInput - check the req data
 router.post(
   "/campaigns",
   checkCampaignInput,
@@ -64,6 +70,7 @@ router.post(
   }
 );
 
+// get the campaign by campaign_id
 router.get("/campaigns/:id", restricted_organization, (req, res) => {
   campaignsModel
     .findCampaignsById(req.params.id)
@@ -79,6 +86,7 @@ router.get("/campaigns/:id", restricted_organization, (req, res) => {
     });
 });
 
+// edit the campaign by campaign_id
 router.put("/campaigns/:id", (req, res) => {
   campaignsModel
     .findCampaignsById(req.params.id)
@@ -103,6 +111,7 @@ router.put("/campaigns/:id", (req, res) => {
     });
 });
 
+// delete the campaign by campaign_id
 router.delete("/campaigns/:id", restricted_organization, (req, res) => {
   campaignsModel
     .findCampaignsById(req.params.id)
